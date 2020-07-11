@@ -1,38 +1,48 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-function Food({name, picture, rating}) {
-  
-  return (
-  <div>
-    <h3>I Love {name}</h3>
-    <h4>{rating}/5.0</h4>
-    <img src={picture} alt={name}/>
-  </div>
-  );
+class App extends React.Component {
+  constructor (props){
+    super(props);
+    console.log('hello');
+  } //제일 먼저 실행되는 생명주기 함수
+  state = {
+    count:0
+  };
 
+  add = () => {
+    this.setState(current => ({
+       count : this.state.count + 1
+      }));
+  };
+
+  minus = () => {
+    this.setState(current => ({
+       count : this.state.count -1
+      }));
+  };
+
+  componentDidMount(){
+    console.log('component rendered');
+  } //생명주기 함수
+
+  componentDidUpdate(){
+    console.log('I just updated');
+  } //화면이 업데이트 되면 실행
+
+  componentWillUnmount(){
+    console.log('GoodBye. cruel world');
+  } //컴포넌트가 화면에서 떠날 때 실행
+
+  render() {
+    console.log("I'm rendering");
+    return(
+      <div>
+        <h1>The number is: {this.state.count}</h1>
+        <button onClick = {this.add}>Add</button>
+        <button onClick = {this.minus}>Minus</button>
+      </div>
+    );
+  } //setState함수가 실행되면 자동으로 실행되는 생명주기 함수
 }
-const foodILike = [
-  {id: 1, name: 'Peach', rating: 4.3, image: 'https://image.shutterstock.com/image-photo/peach-isolate-slice-leaf-on-260nw-1550458292.jpg'},
-  {id: 2, name: 'Apple', rating: 3.5, image: 'https://t1.daumcdn.net/cfile/tistory/2502973855D2D9702C'},
-  {id: 3, name: 'Pear', rating: 3.6, image:'https://dictionary.cambridge.org/ko/images/thumb/pear_noun_002_26910.jpg?version=5.0.102'},
-  {id: 4, name: 'Melon', rating: 3.8, image:'https://www.fondation-louisbonduelle.org/wp-content/uploads/2016/09/melon_194841866.png'},
-  {id: 5, name: 'Kiwi', rating: 4.7, image:'https://t1.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/vRb/image/Wk_WtXrYhEZLO_vVY8pWEYQiAew.jpg'},
-  {id: 6, name: 'Orange', rating: 4.6,image:'https://cdn.shopify.com/s/files/1/1740/4747/products/Orange_Juice_Perth_CBD_2048x.jpg?v=1586142573'}
-];
-
-function App() {
-  return (
-  <div>
-    {foodILike.map(dish => (<Food key = {dish.id} name = {dish.name} picture={dish.image} rating={dish.rating}/>))}
-  </div>
-  );
-}
-
-Food.propTypes = {
-  name: PropTypes.string.isRequired,
-  picture: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
-};
 
 export default App;

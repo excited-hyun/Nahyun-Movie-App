@@ -1,48 +1,55 @@
 import React from 'react';
+import axios from 'axios';
+import Movie from './Movie';
 
 class App extends React.Component {
-  constructor (props){
-    super(props);
-    console.log('hello');
-  } //제일 먼저 실행되는 생명주기 함수
   state = {
-    count:0
+    isLoading: true,    //처음엔 로딩 상태
+    movies: [],
   };
 
-  add = () => {
-    this.setState(current => ({
-       count : this.state.count + 1
-      }));
-  };
+  getMovies = async () =>{
+    const{
+      data:{
+        data:{ movies },
+      },
+    } = await axios.get('https://yts.mx/api/v2/list_movies.json?sort_by=rating') 
+    //구조분해 할당 해줬음
+    this.setState({ movies: movies, isLoading: false });
+    //console.log(movies.data.data.movies) -> 구조분해할당 해주는게 좋음
+  } //async: 함수가 비동기라서 시간이 필요함을 알림   await: 기다려 달라고 말함.
 
-  minus = () => {
-    this.setState(current => ({
-       count : this.state.count -1
-      }));
-  };
-
-  componentDidMount(){
-    console.log('component rendered');
-  } //생명주기 함수
-
-  componentDidUpdate(){
-    console.log('I just updated');
-  } //화면이 업데이트 되면 실행
-
-  componentWillUnmount(){
-    console.log('GoodBye. cruel world');
-  } //컴포넌트가 화면에서 떠날 때 실행
+  componentDidMount() {
+    //영화 데이터 로딩
+    /*
+    axios.get('https://yts.mx/api/v2/list_movies.json') 
+    axios는 네트워크를 사용하기 때문에 매우 느림. 
+    -> axios.get() 실행끝날 때까지 시간 걸릴 수 있음을 JS에 말해야함
+    anxios.get()분리*/
+    this.getMovies();
+  }
 
   render() {
-    console.log("I'm rendering");
-    return(
-      <div>
-        <h1>The number is: {this.state.count}</h1>
-        <button onClick = {this.add}>Add</button>
-        <button onClick = {this.minus}>Minus</button>
-      </div>
-    );
-  } //setState함수가 실행되면 자동으로 실행되는 생명주기 함수
+    const{ isLoading, movies } = this.state;    //구조분해 할당
+    return (
+    <div>
+      {isLoading 
+        ? 'Loading...'
+        : movies.map((movie) => {
+          return( 
+            <Movie 
+              key={movie.id}
+              id={movie.id}
+              year={movie.year}
+              title={movie.title}
+              summary={movie.summary}
+              poster={movie.medium_cover_image}
+            />
+          );
+        })}
+    </div>);
+  }
+   
 }
 
 export default App;

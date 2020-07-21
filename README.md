@@ -1,3 +1,4 @@
 # Nahyun's First Movie App!!!!!
 
-React JS Fundamentals Course 2020
+https://excited-hyun.github.io/Nahyun-Movie-App/
+접속하면 영화정보 확인 가능

@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Nahyun-Movie-App/static/css/main.f2129f31.chunk.css",
+    "main.js": "/Nahyun-Movie-App/static/js/main.23321280.chunk.js",
+    "main.js.map": "/Nahyun-Movie-App/static/js/main.23321280.chunk.js.map",
+    "runtime-main.js": "/Nahyun-Movie-App/static/js/runtime-main.a9b19733.js",
+    "runtime-main.js.map": "/Nahyun-Movie-App/static/js/runtime-main.a9b19733.js.map",
+    "static/js/2.d83872c2.chunk.js": "/Nahyun-Movie-App/static/js/2.d83872c2.chunk.js",
+    "static/js/2.d83872c2.chunk.js.map": "/Nahyun-Movie-App/static/js/2.d83872c2.chunk.js.map",
+    "index.html": "/Nahyun-Movie-App/index.html",
+    "precache-manifest.c08cd82621e0c1feb9bf13c78e3fdfbb.js": "/Nahyun-Movie-App/precache-manifest.c08cd82621e0c1feb9bf13c78e3fdfbb.js",
+    "service-worker.js": "/Nahyun-Movie-App/service-worker.js",
+    "static/css/main.f2129f31.chunk.css.map": "/Nahyun-Movie-App/static/css/main.f2129f31.chunk.css.map",
+    "static/js/2.d83872c2.chunk.js.LICENSE.txt": "/Nahyun-Movie-App/static/js/2.d83872c2.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a9b19733.js",
+    "static/js/2.d83872c2.chunk.js",
+    "static/css/main.f2129f31.chunk.css",
+    "static/js/main.23321280.chunk.js"
+  ]
+}
